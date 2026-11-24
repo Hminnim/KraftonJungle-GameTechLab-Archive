@@ -1,0 +1,27 @@
+﻿#pragma once
+
+#include "Core/Object/Object.h"
+
+struct FRenderInfo;
+
+class UActorComponent : public UObject
+{
+	DECLARE_OBJECT(UActorComponent, UObject)
+public:
+	UActorComponent();
+	virtual ~UActorComponent();
+
+	//virtual void Serialize(FStructuredArchive& archive) override;
+
+	void SetOwner(AActor* owner);
+	void ClearOwner();
+	AActor* GetOwner() const;
+
+	// Todo: Make as pure class
+	virtual void Update(float deltaTime, TArray<const FRenderInfo*>& outRenderInfos);
+	virtual void GetRenderInfos(TArray<const FRenderInfo*>& outRenderInfos);
+
+protected:
+	AActor* mOwner;
+};
+
