@@ -1,0 +1,116 @@
+#pragma once
+
+#include "GameFramework/Actor.h"
+#include "Render/SceneViewTargets.h"
+#include "Render/SceneRenderData.h"
+#include "Render/SceneView.h"
+
+class FRenderer;
+class FSkyboxRenderer;
+struct FSceneRenderOptions;
+class UPrimitiveComponent;
+class UStaticMeshComponent;
+class UBoxComponent;
+struct FHitResult;
+
+// FSceneView를 채울 때 사용
+struct FPortalCameraPose
+{
+	FVector  Location;
+	FRotator Rotation;
+	FVector  Forward;
+	FMatrix  ViewMatrix;
+};
+
+class APortalActor : public AActor
+{
+	DECLARE_CLASS(APortalActor, AActor)
+public:
+	APortalActor();
+
+	// 게임 시작 시 1번 호출: 2개 스폰 + 서로 연결 + 숨김 상태
+	static void SpawnPair(UWorld* World, APortalActor*& OutBlue, APortalActor*& OutOrange);
+
+	// 포탈건이 맞힌 지점/법선으로 이동
+	void PlaceAt(const FVector& Location, const FVector& Normal);
+	bool PlaceAt(const FHitResult& InHitResult, const FVector& ViewerForward);
+
+	// 나와 상대가 모두 설치됐을 때만 건너편을 그린다
+	bool IsActive() const { return bPlaced && LinkedPortal && LinkedPortal->bPlaced; }
+
+	APortalActor* GetLinkedPortal() const { return LinkedPortal; }
+	UStaticMeshComponent* GetPortalMesh() const { return PortalMesh; }
+	FVector GetPortalNormal() const { return GetActorQuat().GetForwardVector(); }
+
+	static constexpr float PortalResolutionScale = 0.5f;
+
+	// 렌더링 직전에 매 프레임 호출. 크기가 같으면 아무 일도 안 한다.
+	bool EnsureRenderTarget(uint32 Width, uint32 Height) { return ViewTargets.Resize(Width, Height); }
+
+	FSceneViewTargets& GetViewTargets() { return ViewTargets; }
+	FSceneRenderData& GetRenderData() { return RenderData; }
+
+	// 포탈 면 셰이더가 읽을 텍스처
+	FTexture2D* GetPortalTexture() const { return ViewTargets.SceneColor.get(); }
+
+	// 플레이어 카메라 → 이 포탈을 통해 본 가상 카메라
+	bool CalcVirtualCamera(const FVector& CamLocation, const FRotator& CamRotation, FPortalCameraPose& Out) const;
+
+	// 스케일 없는 포탈 월드 행렬 (회전 + 위치)
+	FMatrix GetPortalMatrix() const;
+
+	// 포탈 면(Plane 메시) 월드 행렬. 오일러(FRotator) 변환을 거치지 않고 행렬로 직접 조립한다.
+	FMatrix GetSurfaceMatrix() const;
+
+	// 메인 뷰 → 이 포탈을 통해 본 뷰 (FSceneRenderer에 넘김)
+	bool CalcPortalSceneView(const FSceneView& MainView, FSceneView& OutView) const;
+
+	// 메인 뷰를 그리기 직전에 호출. 활성 포탈마다 씬을 한 번씩 포탈 텍스처에 그린다.
+	static void RenderPortalViews(UWorld* World, FRenderer* Renderer, FSkyboxRenderer* Skybox,
+		const FSceneView& MainView, const FSceneRenderOptions& MainOptions);
+
+	static void DrawPortalSurfaces(UWorld* World, const FSceneView& MainView); 
+
+	bool IsPlaced() const { return bPlaced; }
+	void ResetPortal()
+	{
+		bPlaced = false;
+		SetActorLocation(FVector(0.0f, 0.0f, -9999.0f));
+	}
+
+	UBoxComponent* GetPortalTrigger() const { return PortalTrigger; }
+	float GetPortalWidth() const { return PortalWidth; }
+	float GetPortalHeight() const { return PortalHeight; }
+
+private:
+	UStaticMeshComponent* PortalMesh = nullptr;
+	APortalActor* LinkedPortal = nullptr;
+	bool bPlaced = false;
+
+	FVector4 PortalColor = FVector4(1.0f, 1.0f, 1.0f, 1.0f);
+
+	FSceneViewTargets ViewTargets;   // 포탈 카메라가 그린 결과 (Color + Depth)
+	FSceneRenderData  RenderData;    // 포탈 뷰 전용 렌더 큐/그림자 캐시
+
+	UBoxComponent* PortalTrigger = nullptr;
+
+	float PortalWidth = 2.0f;
+	float PortalHeight = 4.0f;
+
+public:
+	FMatrix GetTeleportMatrix() const;
+
+	bool IsPointWithinPortalBounds(const FVector& Point, float Margin = 0.0f) const;
+
+	bool Checkcrossing(const FVector& PrevPos, const FVector& CurPos, float Margin = 0.0f) const;
+
+	float GetDistanceToPlane(const FVector& Point) const;
+
+private:
+	// Portal 설치 조건 함수
+	bool IsPortableSurface(UPrimitiveComponent* HitComponent) const;
+	bool CalculatePortalRotation(const FVector& SurfaceNormal, const FVector& ViewerForward, FRotator& OutRotation) const;
+	bool AdjustLocationForEdges(FVector& InOutLocation, const FRotator& Rotation, const FVector& SurfaceNormal) const;
+	bool IsOverlappingLinkedPortal(const FVector& DesiredLocation, const FVector& SurfaceNormal) const;
+	bool HasEntryClearance(const FVector& Location, const FRotator& Rotation, const FVector& SurfaceNormal) const;
+};

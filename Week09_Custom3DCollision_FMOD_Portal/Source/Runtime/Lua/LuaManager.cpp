@@ -1,0 +1,91 @@
+#include "EnginePCH.h"
+#include "LuaManager.h"
+#include "Bindings/LuaBindings.h"
+#include "Core/EngineLog.h"
+
+FLuaManager* FLuaManager::ActiveManager = nullptr;
+
+FLuaManager::~FLuaManager()
+{
+	if (ActiveManager == this)
+	{
+		ActiveManager = nullptr;
+	}
+	Shutdown();
+}
+
+bool FLuaManager::Init()
+{
+	if (bInitialized) return true;
+
+	// 루아 VM 초기화 및 표준 라이브러리 로드
+	Lua.open_libraries(
+		sol::lib::base,
+		sol::lib::package,
+		sol::lib::math,
+		sol::lib::string,
+		sol::lib::table,
+		sol::lib::coroutine);
+
+	// require() 및 스크립트 모듈 탐색용 package.path 설정
+	Lua.script(R"(
+		local cur_path = package.path or ""
+		package.path = "Scripts/?.lua;./Scripts/?.lua;../../../Scripts/?.lua;?.lua;./?.lua;" .. cur_path
+	)");
+
+	Lua.set_exception_handler([](lua_State* L, sol::optional<const std::exception&> MaybeException, sol::string_view Description) {
+		HTR_LOG(Error, "[Lua Exception] {}", Description);
+		return sol::stack::push(L, Description);
+	});
+	lua_atpanic(Lua.lua_state(), [](lua_State* L) -> int {
+		const char* Msg = lua_tostring(L, -1);
+		HTR_LOG(Error, "[Lua Panic] Fatal error: {}", Msg ? Msg : "Unknown");
+		return 0; // 에디터 강제 종료(abort) 방지
+	});
+
+	// 엔진 API 바인딩
+	BindEngine();
+	bInitialized = true;
+	HTR_LOG(Info, "[LuaManager] Successfully initialized LuaJIT & Sol2!");
+
+	return true;
+}
+
+void FLuaManager::Shutdown()
+{
+	if (!bInitialized) return;
+
+	// 1. 활성 타이머 정리 (Lua 콜백이 등록된 타이머 해제)
+	LuaBindings::ClearTimers();
+
+	// 2. 가비지 컬렉션 수행
+	Lua.collect_garbage();
+
+	// 3. Lua VM 상태 초기화
+	Lua = sol::state();
+	bInitialized = false;
+	ActiveWorld = nullptr;
+	HTR_LOG(Info, "[LuaManager] Shutdown completed.");
+}
+
+void FLuaManager::BindEngine()
+{
+	// 기본 print 함수를 엔진 로그 바인딩 (소문자/대문자 모두 지원)
+	auto PrintFunc = [](sol::variadic_args args) {
+		FString msg;
+		for (auto arg : args) {
+			msg += arg.as<FString>() + " ";
+		}
+		HTR_LOG(Info, "[Lua] {}", msg);
+	};
+	Lua.set_function("print", PrintFunc);
+	Lua.set_function("Print", PrintFunc);
+
+	// 도메인별 바인딩 모듈 호출
+	LuaBindings::BindMath(Lua);
+	LuaBindings::BindActor(Lua);
+	LuaBindings::BindComponent(Lua);
+	LuaBindings::BindInput(Lua);
+	LuaBindings::BindTime(Lua);
+	LuaBindings::BindCoroutine(Lua);
+}
