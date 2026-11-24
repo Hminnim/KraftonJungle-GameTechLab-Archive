@@ -1,0 +1,113 @@
+{
+    "Version": 5,
+    "World": {
+        "PersistentLevel": {
+            "Actors": [
+                {
+                    "Class": "AStaticMeshActor",
+                    "Components": [
+                        {
+                            "Class": "UBoxComponent",
+                            "Name": "UBoxComponent_0",
+                            "Parent": 0,
+                            "Properties": {
+                                "BoxExtent": {
+                                    "X": 0.5,
+                                    "Y": 0.5,
+                                    "Z": 0.5
+                                },
+                                "ShapeColor": 4286105710,
+                                "Transform": {
+                                    "Location": {
+                                        "X": 16.215003967285156,
+                                        "Y": 3.665680408477783,
+                                        "Z": -0.8502521514892578
+                                    },
+                                    "Rotation": {
+                                        "Pitch": -0.0,
+                                        "Roll": 0.0,
+                                        "Yaw": 0.0
+                                    },
+                                    "Scale": {
+                                        "X": 1.0,
+                                        "Y": 1.0,
+                                        "Z": 1.0
+                                    }
+                                },
+                                "bAutoActivate": true,
+                                "bBlockComponent": false,
+                                "bCastShadow": false,
+                                "bDrawOnlyIfSelected": false,
+                                "bGenerateOverlapEvents": true,
+                                "bHiddenInGame": false,
+                                "bReceiveDecal": true,
+                                "bReceiveShadow": false,
+                                "bVisible": true
+                            },
+                            "Id": 1,
+                            "Outer": 0
+                        }
+                    ],
+                    "Name": "AStaticMeshActor_0",
+                    "Properties": {
+                        "bActorEnableCollision": true
+                    },
+                    "RootComponent": 1
+                },
+                {
+                    "Class": "AStaticMeshActor",
+                    "Components": [
+                        {
+                            "Class": "UStaticMeshComponent",
+                            "Name": "UStaticMeshComponent",
+                            "OverrideMaterials": [],
+                            "Parent": 0,
+                            "Properties": {
+                                "StaticMesh": "Cube",
+                                "Transform": {
+                                    "Location": {
+                                        "X": 16.98007583618164,
+                                        "Y": 0.8115531206130981,
+                                        "Z": -0.7769761085510254
+                                    },
+                                    "Rotation": {
+                                        "Pitch": 0.0,
+                                        "Roll": 0.0,
+                                        "Yaw": 0.0
+                                    },
+                                    "Scale": {
+                                        "X": 1.0,
+                                        "Y": 1.0,
+                                        "Z": 1.0
+                                    }
+                                },
+                                "bAutoActivate": true,
+                                "bBlockComponent": false,
+                                "bCastShadow": true,
+                                "bGenerateOverlapEvents": true,
+                                "bHiddenInGame": false,
+                                "bReceiveDecal": true,
+                                "bReceiveShadow": true,
+                                "bVisible": true
+                            },
+                            "Id": 2,
+                            "Outer": 0
+                        }
+                    ],
+                    "Name": "AStaticMeshActor_1",
+                    "Properties": {
+                        "bActorEnableCollision": true
+                    },
+                    "RootComponent": 2
+                }
+            ],
+            "Properties": {}
+        },
+        "Properties": {
+            "GameModeClassName": "AGameMode",
+            "HUDClassName": "",
+            "PlayerControllerClassName": "",
+            "PlayerPawnClassName": ""
+        }
+    }
+}

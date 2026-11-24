@@ -1,0 +1,170 @@
+{
+  "Emitters": [
+    {
+      "LODLevels": [
+        {
+          "Modules": [
+            {
+              "Class": "UParticleModuleLifetime",
+              "Data": {
+                "Lifetime": {
+                  "Constant": 1.0,
+                  "Keys": [],
+                  "Kind": "Constant",
+                  "Max": 0.0,
+                  "Min": 0.0
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleSize",
+              "Data": {
+                "StartSize": {
+                  "Constant": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": [
+                    0.30000001192092896,
+                    0.30000001192092896,
+                    0.30000001192092896
+                  ],
+                  "Min": [
+                    0.20000000298023224,
+                    0.20000000298023224,
+                    0.20000000298023224
+                  ]
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleVelocity",
+              "Data": {
+                "StartVelocity": {
+                  "Constant": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": [
+                    0.5,
+                    0.5,
+                    1.5
+                  ],
+                  "Min": [
+                    -0.5,
+                    -0.5,
+                    0.5
+                  ]
+                },
+                "StartVelocityRadial": {
+                  "Constant": 0.0,
+                  "Keys": [],
+                  "Kind": "Constant",
+                  "Max": 0.0,
+                  "Min": 0.0
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleColor",
+              "Data": {
+                "StartAlpha": {
+                  "Constant": 1.0,
+                  "Keys": [],
+                  "Kind": "Constant",
+                  "Max": 0.0,
+                  "Min": 0.0
+                },
+                "StartColor": {
+                  "Constant": [
+                    1.0,
+                    1.0,
+                    1.0
+                  ],
+                  "Keys": [],
+                  "Kind": "Constant",
+                  "Max": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "Min": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                },
+                "bEnabled": true
+              }
+            }
+          ],
+          "Properties": {
+            "Level": 0,
+            "bEnabled": true
+          },
+          "Required": {
+            "Class": "UParticleModuleRequired",
+            "Data": {
+              "EmitterDelay": 0.0,
+              "EmitterDelayLow": 0.0,
+              "EmitterDuration": 1.0,
+              "EmitterDurationLow": 0.0,
+              "EmitterLoops": 0,
+              "EmitterOrigin": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "EmitterRotation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "Material": null,
+              "bEmitterDelayUseRange": false,
+              "bEmitterDurationUseRange": false,
+              "bEnabled": true,
+              "bUseLocalSpace": false
+            }
+          },
+          "Spawn": {
+            "Class": "UParticleModuleSpawn",
+            "Data": {
+              "BurstList": [],
+              "Rate": {
+                "Constant": 20.0,
+                "Keys": [],
+                "Kind": "Constant",
+                "Max": 0.0,
+                "Min": 0.0
+              },
+              "RateScale": {
+                "Constant": 1.0,
+                "Keys": [],
+                "Kind": "Constant",
+                "Max": 0.0,
+                "Min": 0.0
+              },
+              "bEnabled": true
+            }
+          },
+          "TypeData": null
+        }
+      ],
+      "Properties": {
+        "EmitterName": "Emitter"
+      }
+    }
+  ],
+  "Type": "ParticleSystem",
+  "Version": 1
+}

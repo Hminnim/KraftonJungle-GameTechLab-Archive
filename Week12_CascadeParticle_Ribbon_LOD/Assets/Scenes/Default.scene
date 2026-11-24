@@ -1,0 +1,15 @@
+{
+    "Version": 5,
+    "World": {
+        "Properties": {
+            "GameModeClassName": "AGameMode",
+            "PlayerPawnClassName": "",
+            "PlayerControllerClassName": "",
+            "HUDClassName": ""
+        },
+        "PersistentLevel": {
+            "Properties": {},
+            "Actors": []
+        }
+    }
+}

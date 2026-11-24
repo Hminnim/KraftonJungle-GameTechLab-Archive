@@ -1,0 +1,92 @@
+{
+  "Emitters": [
+    {
+      "LODLevels": [
+        {
+          "Modules": [
+            {
+              "Class": "UParticleModuleLifetime",
+              "Data": {
+                "Lifetime": { "Constant": 1.0, "Keys": [], "Kind": "Constant", "Max": 0.0, "Min": 0.0 },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleSize",
+              "Data": {
+                "StartSize": { "Constant": [0.08, 0.08, 0.08], "Keys": [], "Kind": "Constant", "Max": [0.0, 0.0, 0.0], "Min": [0.0, 0.0, 0.0] },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleColor",
+              "Data": {
+                "StartAlpha": { "Constant": 1.0, "Keys": [], "Kind": "Constant", "Max": 0.0, "Min": 0.0 },
+                "StartColor": { "Constant": [0.55, 0.8, 1.0], "Keys": [], "Kind": "Constant", "Max": [0.0, 0.0, 0.0], "Min": [0.0, 0.0, 0.0] },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleBeamNoise",
+              "Data": {
+                "bLowFreq_Enabled": true,
+                "Frequency": 8,
+                "NoiseRange": { "Constant": [0.0, 0.0, 0.0], "Keys": [], "Kind": "Uniform", "Max": [0.0, 0.3, 0.3], "Min": [0.0, -0.3, -0.3] },
+                "NoiseSpeed": 3.0,
+                "bSmooth": true,
+                "NoiseLockRadius": 0.01,
+                "NoiseLockTime": 0.15,
+                "NoiseTangentStrength": 0.5,
+                "NoiseTessellation": 6,
+                "bTargetNoise": false,
+                "bEnabled": true
+              }
+            }
+          ],
+          "Properties": { "Level": 0, "bEnabled": true },
+          "Required": {
+            "Class": "UParticleModuleRequired",
+            "Data": {
+              "EmitterDelay": 0.0,
+              "EmitterDelayLow": 0.0,
+              "EmitterDuration": 1.0,
+              "EmitterDurationLow": 0.0,
+              "EmitterLoops": 0,
+              "EmitterOrigin": [0.0, 0.0, 0.0],
+              "EmitterRotation": [0.0, 0.0, 0.0],
+              "Material": { "Base": "ParticleSpriteMaterial", "Texture": null },
+              "bEmitterDelayUseRange": false,
+              "bEmitterDurationUseRange": false,
+              "bEnabled": true,
+              "bUseLocalSpace": false
+            }
+          },
+          "Spawn": {
+            "Class": "UParticleModuleSpawn",
+            "Data": {
+              "BurstList": [],
+              "Rate": { "Constant": 1.0, "Keys": [], "Kind": "Constant", "Max": 0.0, "Min": 0.0 },
+              "RateScale": { "Constant": 1.0, "Keys": [], "Kind": "Constant", "Max": 0.0, "Min": 0.0 },
+              "bEnabled": true
+            }
+          },
+          "TypeData": {
+            "Class": "UParticleModuleTypeDataBeam",
+            "Data": {
+              "BeamMethod": "Distance",
+              "Distance": 3.0,
+              "InterpolationPoints": 0,
+              "Sheets": 2,
+              "TargetPoint": [0.25, 0.0, 0.0],
+              "TextureTile": 1.0,
+              "bEnabled": true
+            }
+          }
+        }
+      ],
+      "Properties": { "EmitterName": "Beam" }
+    }
+  ],
+  "Type": "ParticleSystem",
+  "Version": 1
+}

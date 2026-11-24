@@ -1,0 +1,224 @@
+{
+  "Type": "ParticleSystem",
+  "Version": 1,
+  "Properties": {
+    "LODDistanceCheckTime": 0.25,
+    "LODDistances": [
+      0.0
+    ],
+    "LODMethod": "Automatic"
+  },
+  "Emitters": [
+    {
+      "Properties": {
+        "EmitterName": "CollisionMesh_Bounce"
+      },
+      "LODLevels": [
+        {
+          "Properties": {
+            "Level": 0,
+            "bEnabled": true
+          },
+          "Required": {
+            "Class": "UParticleModuleRequired",
+            "Data": {
+              "EmitterDelay": 0.0,
+              "EmitterDelayLow": 0.0,
+              "EmitterDuration": 1.0,
+              "EmitterDurationLow": 0.0,
+              "EmitterLoops": 0,
+              "EmitterOrigin": [0.0, 0.0, 0.0],
+              "EmitterRotation": [0.0, 0.0, 0.0],
+              "Material": null,
+              "bEmitterDelayUseRange": false,
+              "bEmitterDurationUseRange": false,
+              "bEnabled": true,
+              "bUseLocalSpace": false
+            }
+          },
+          "Spawn": {
+            "Class": "UParticleModuleSpawn",
+            "Data": {
+              "BurstList": [],
+              "Rate": {
+                "Constant": 16.0,
+                "Keys": [],
+                "Kind": "Constant",
+                "Max": 16.0,
+                "Min": 16.0
+              },
+              "RateScale": {
+                "Constant": 1.0,
+                "Keys": [],
+                "Kind": "Constant",
+                "Max": 1.0,
+                "Min": 1.0
+              },
+              "bEnabled": true
+            }
+          },
+          "TypeData": {
+            "Class": "UParticleModuleTypeDataMesh",
+            "Data": {
+              "MaterialOverrides": [],
+              "Mesh": "Cube",
+              "RollPitchYawRange": {
+                "Constant": [0.0, 0.0, 0.0],
+                "Keys": [],
+                "Kind": "Uniform",
+                "Max": [360.0, 360.0, 360.0],
+                "Min": [0.0, 0.0, 0.0]
+              },
+              "bEnabled": true
+            }
+          },
+          "Modules": [
+            {
+              "Class": "UParticleModuleLifetime",
+              "Data": {
+                "Lifetime": {
+                  "Constant": 2.2,
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": 2.5,
+                  "Min": 1.8
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleLocation",
+              "Data": {
+                "StartLocation": {
+                  "Constant": [0.0, 0.0, 0.0],
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": [0.55, 0.55, 0.1],
+                  "Min": [-0.55, -0.55, -0.1]
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleVelocity",
+              "Data": {
+                "StartVelocity": {
+                  "Constant": [0.0, 0.0, -4.5],
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": [0.35, 0.35, -3.8],
+                  "Min": [-0.35, -0.35, -5.2]
+                },
+                "StartVelocityRadial": {
+                  "Constant": 0.0,
+                  "Keys": [],
+                  "Kind": "Constant",
+                  "Max": 0.0,
+                  "Min": 0.0
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleSize",
+              "Data": {
+                "StartSize": {
+                  "Constant": [0.18, 0.18, 0.18],
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": [0.22, 0.22, 0.22],
+                  "Min": [0.14, 0.14, 0.14]
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleMeshRotationRate",
+              "Data": {
+                "StartRotationRate": {
+                  "Constant": [90.0, 90.0, 90.0],
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": [140.0, 140.0, 140.0],
+                  "Min": [-140.0, -140.0, -140.0]
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleColorOverLife",
+              "Data": {
+                "AlphaOverLife": {
+                  "Constant": 1.0,
+                  "Keys": [],
+                  "Kind": "Constant",
+                  "Max": 1.0,
+                  "Min": 1.0
+                },
+                "ColorOverLife": {
+                  "Constant": [0.25, 0.95, 0.65],
+                  "Keys": [
+                    { "Time": 0.0, "Value": [0.25, 0.95, 0.65] },
+                    { "Time": 0.5, "Value": [0.3, 0.75, 1.0] },
+                    { "Time": 1.0, "Value": [0.95, 0.45, 0.2] }
+                  ],
+                  "Kind": "Curve",
+                  "Max": [1.0, 1.0, 1.0],
+                  "Min": [0.0, 0.0, 0.0]
+                },
+                "bClampAlpha": true,
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleCollision",
+              "Data": {
+                "CollisionCompletionOption": "Kill",
+                "CollisionTarget": "AllStaticMeshes",
+                "DampingFactor": {
+                  "Constant": [0.8, 0.8, 0.78],
+                  "Keys": [],
+                  "Kind": "Constant",
+                  "Max": [0.8, 0.8, 0.78],
+                  "Min": [0.8, 0.8, 0.78]
+                },
+                "DampingFactorRotation": {
+                  "Constant": [1.4, -1.4, 1.2],
+                  "Keys": [],
+                  "Kind": "Constant",
+                  "Max": [1.4, -1.4, 1.2],
+                  "Min": [1.4, -1.4, 1.2]
+                },
+                "DelayAmount": {
+                  "Constant": 0.0,
+                  "Keys": [],
+                  "Kind": "Constant",
+                  "Max": 0.0,
+                  "Min": 0.0
+                },
+                "DirScalar": 3.5,
+                "EventFilter": "EveryCollision",
+                "MaxCollisionDistance": 0.0,
+                "MaxCollisions": {
+                  "Constant": 4.0,
+                  "Keys": [],
+                  "Kind": "Constant",
+                  "Max": 4.0,
+                  "Min": 4.0
+                },
+                "VerticalFudgeFactor": 0.1,
+                "bCollideOnlyIfVisible": false,
+                "bCollideWithBlockingShapes": true,
+                "bEnabled": true,
+                "bGenerateCollisionEvents": false,
+                "bIgnoreSourceActor": true,
+                "bOnlyVerticalNormalsDecrementCount": false,
+                "bPawnsDoNotDecrementCount": false
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+#pragma once
+
+#include "UObject/Object.h"
+#include "UObject/Class.h"
+#include "Containers/Array.h"
+#include "Level.generated.h"
+
+class UWorld;
+class AActor;
+
+UCLASS()
+class ULevel : public UObject
+{
+    GENERATED_BODY()
+
+public:
+    ULevel() = default;
+    virtual ~ULevel() = default;
+
+    UWorld* GetWorld() const { return OwningWorld; }
+    void SetWorld(UWorld* InWorld) { OwningWorld = InWorld; }
+
+    const TArray<AActor*>& GetActors() const  { return Actors; }
+    uint32 GetActorNum() const { return Actors.Num(); }
+
+    void AddActor(AActor* Actor);
+    void AdoptLoadedActors(ULevel& StagedLevel);
+    void ClearActors();
+
+    using Super::Serialize;   
+    virtual void Serialize(FStructuredArchive::FRecord Record) override;
+
+    static void SaveActorRecord(FStructuredArchive::FRecord ActorRecord, AActor* Actor, bool bForClipboard = false);
+
+private:
+    UWorld* OwningWorld = nullptr;
+    TArray<AActor*> Actors;
+
+    // AWorldSettings* WorldSettings = nullptr;
+
+    bool bIsVisible = true;
+
+    friend class UWorld;
+};

@@ -1,0 +1,507 @@
+{
+  "Type": "ParticleSystem",
+  "Version": 1,
+  "Properties": {
+    "LODDistanceCheckTime": 0.25,
+    "LODDistances": [
+      0.0
+    ],
+    "LODMethod": "Automatic"
+  },
+  "Emitters": [
+    {
+      "Properties": {
+        "EmitterName": "FlameCore"
+      },
+      "LODLevels": [
+        {
+          "Properties": {
+            "Level": 0,
+            "bEnabled": true
+          },
+          "Required": {
+            "Class": "UParticleModuleRequired",
+            "Data": {
+              "EmitterDelay": 0.0,
+              "EmitterDelayLow": 0.0,
+              "EmitterDuration": 1.0,
+              "EmitterDurationLow": 0.0,
+              "EmitterLoops": 0,
+              "EmitterOrigin": [0.0, 0.0, 0.0],
+              "EmitterRotation": [0.0, 0.0, 0.0],
+              "Material": {
+                "Asset": "ParticleSpriteAdditiveMaterial"
+              },
+              "bEmitterDelayUseRange": false,
+              "bEmitterDurationUseRange": false,
+              "bEnabled": true,
+              "bUseLocalSpace": false
+            }
+          },
+          "Spawn": {
+            "Class": "UParticleModuleSpawn",
+            "Data": {
+              "BurstList": [],
+              "Rate": {
+                "Constant": 45.0,
+                "Keys": [],
+                "Kind": "Constant",
+                "Max": 45.0,
+                "Min": 45.0
+              },
+              "RateScale": {
+                "Constant": 1.0,
+                "Keys": [],
+                "Kind": "Constant",
+                "Max": 1.0,
+                "Min": 1.0
+              },
+              "bEnabled": true
+            }
+          },
+          "TypeData": null,
+          "Modules": [
+            {
+              "Class": "UParticleModuleLifetime",
+              "Data": {
+                "Lifetime": {
+                  "Constant": 1.4,
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": 1.6,
+                  "Min": 1.0
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleLocation",
+              "Data": {
+                "StartLocation": {
+                  "Constant": [0.0, 0.0, 0.0],
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": [0.25, 0.25, 0.1],
+                  "Min": [-0.25, -0.25, 0.0]
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleVelocity",
+              "Data": {
+                "StartVelocity": {
+                  "Constant": [0.0, 0.0, 1.8],
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": [0.4, 0.4, 2.4],
+                  "Min": [-0.4, -0.4, 1.2]
+                },
+                "StartVelocityRadial": {
+                  "Constant": 0.2,
+                  "Keys": [],
+                  "Kind": "Constant",
+                  "Max": 0.2,
+                  "Min": 0.2
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleSize",
+              "Data": {
+                "StartSize": {
+                  "Constant": [0.45, 0.45, 0.45],
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": [0.55, 0.55, 0.55],
+                  "Min": [0.32, 0.32, 0.32]
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleSizeMultiplyLife",
+              "Data": {
+                "LifeMultiplier": {
+                  "Constant": [1.0, 1.0, 1.0],
+                  "Keys": [
+                    { "Time": 0.0, "Value": [0.4, 0.4, 0.4] },
+                    { "Time": 0.3, "Value": [1.2, 1.2, 1.2] },
+                    { "Time": 1.0, "Value": [0.1, 0.1, 0.1] }
+                  ],
+                  "Kind": "Curve",
+                  "Max": [1.0, 1.0, 1.0],
+                  "Min": [1.0, 1.0, 1.0]
+                },
+                "MultiplyX": true,
+                "MultiplyY": true,
+                "MultiplyZ": true,
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleColorOverLife",
+              "Data": {
+                "AlphaOverLife": {
+                  "Constant": 1.0,
+                  "Keys": [
+                    { "Time": 0.0, "Value": 0.0 },
+                    { "Time": 0.15, "Value": 0.95 },
+                    { "Time": 0.7, "Value": 0.6 },
+                    { "Time": 1.0, "Value": 0.0 }
+                  ],
+                  "Kind": "Curve",
+                  "Max": 1.0,
+                  "Min": 1.0
+                },
+                "ColorOverLife": {
+                  "Constant": [1.0, 1.0, 1.0],
+                  "Keys": [
+                    { "Time": 0.0, "Value": [1.0, 0.95, 0.4] },
+                    { "Time": 0.4, "Value": [1.0, 0.45, 0.08] },
+                    { "Time": 0.8, "Value": [0.85, 0.12, 0.05] },
+                    { "Time": 1.0, "Value": [0.2, 0.02, 0.02] }
+                  ],
+                  "Kind": "Curve",
+                  "Max": [1.0, 1.0, 1.0],
+                  "Min": [1.0, 1.0, 1.0]
+                },
+                "bClampAlpha": true,
+                "bEnabled": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Properties": {
+        "EmitterName": "RisingEmbers"
+      },
+      "LODLevels": [
+        {
+          "Properties": {
+            "Level": 0,
+            "bEnabled": true
+          },
+          "Required": {
+            "Class": "UParticleModuleRequired",
+            "Data": {
+              "EmitterDelay": 0.0,
+              "EmitterDelayLow": 0.0,
+              "EmitterDuration": 1.0,
+              "EmitterDurationLow": 0.0,
+              "EmitterLoops": 0,
+              "EmitterOrigin": [0.0, 0.0, 0.1],
+              "EmitterRotation": [0.0, 0.0, 0.0],
+              "Material": {
+                "Asset": "ParticleSpriteAdditiveMaterial"
+              },
+              "bEmitterDelayUseRange": false,
+              "bEmitterDurationUseRange": false,
+              "bEnabled": true,
+              "bUseLocalSpace": false
+            }
+          },
+          "Spawn": {
+            "Class": "UParticleModuleSpawn",
+            "Data": {
+              "BurstList": [
+                { "Count": 12, "CountLow": 8, "Time": 0.0 }
+              ],
+              "Rate": {
+                "Constant": 30.0,
+                "Keys": [],
+                "Kind": "Constant",
+                "Max": 30.0,
+                "Min": 30.0
+              },
+              "RateScale": {
+                "Constant": 1.0,
+                "Keys": [],
+                "Kind": "Constant",
+                "Max": 1.0,
+                "Min": 1.0
+              },
+              "bEnabled": true
+            }
+          },
+          "TypeData": null,
+          "Modules": [
+            {
+              "Class": "UParticleModuleLifetime",
+              "Data": {
+                "Lifetime": {
+                  "Constant": 2.0,
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": 2.4,
+                  "Min": 1.4
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleLocation",
+              "Data": {
+                "StartLocation": {
+                  "Constant": [0.0, 0.0, 0.0],
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": [0.6, 0.6, 0.2],
+                  "Min": [-0.6, -0.6, 0.0]
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleVelocity",
+              "Data": {
+                "StartVelocity": {
+                  "Constant": [0.0, 0.0, 2.0],
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": [1.1, 1.1, 3.2],
+                  "Min": [-1.1, -1.1, 1.5]
+                },
+                "StartVelocityRadial": {
+                  "Constant": 0.6,
+                  "Keys": [],
+                  "Kind": "Constant",
+                  "Max": 0.6,
+                  "Min": 0.6
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleSize",
+              "Data": {
+                "StartSize": {
+                  "Constant": [0.12, 0.12, 0.12],
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": [0.16, 0.16, 0.16],
+                  "Min": [0.08, 0.08, 0.08]
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleSizeMultiplyLife",
+              "Data": {
+                "LifeMultiplier": {
+                  "Constant": [1.0, 1.0, 1.0],
+                  "Keys": [
+                    { "Time": 0.0, "Value": [1.0, 1.0, 1.0] },
+                    { "Time": 0.7, "Value": [0.8, 0.8, 0.8] },
+                    { "Time": 1.0, "Value": [0.0, 0.0, 0.0] }
+                  ],
+                  "Kind": "Curve",
+                  "Max": [1.0, 1.0, 1.0],
+                  "Min": [1.0, 1.0, 1.0]
+                },
+                "MultiplyX": true,
+                "MultiplyY": true,
+                "MultiplyZ": true,
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleColorOverLife",
+              "Data": {
+                "AlphaOverLife": {
+                  "Constant": 1.0,
+                  "Keys": [
+                    { "Time": 0.0, "Value": 1.0 },
+                    { "Time": 0.8, "Value": 0.8 },
+                    { "Time": 1.0, "Value": 0.0 }
+                  ],
+                  "Kind": "Curve",
+                  "Max": 1.0,
+                  "Min": 1.0
+                },
+                "ColorOverLife": {
+                  "Constant": [1.0, 1.0, 1.0],
+                  "Keys": [
+                    { "Time": 0.0, "Value": [0.3, 0.9, 1.0] },
+                    { "Time": 0.5, "Value": [0.6, 0.4, 1.0] },
+                    { "Time": 1.0, "Value": [1.0, 0.2, 0.6] }
+                  ],
+                  "Kind": "Curve",
+                  "Max": [1.0, 1.0, 1.0],
+                  "Min": [1.0, 1.0, 1.0]
+                },
+                "bClampAlpha": true,
+                "bEnabled": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Properties": {
+        "EmitterName": "SmokePlume"
+      },
+      "LODLevels": [
+        {
+          "Properties": {
+            "Level": 0,
+            "bEnabled": true
+          },
+          "Required": {
+            "Class": "UParticleModuleRequired",
+            "Data": {
+              "EmitterDelay": 0.0,
+              "EmitterDelayLow": 0.0,
+              "EmitterDuration": 1.0,
+              "EmitterDurationLow": 0.0,
+              "EmitterLoops": 0,
+              "EmitterOrigin": [0.0, 0.0, 0.6],
+              "EmitterRotation": [0.0, 0.0, 0.0],
+              "Material": {
+                "Asset": "ParticleSpriteMaterial"
+              },
+              "bEmitterDelayUseRange": false,
+              "bEmitterDurationUseRange": false,
+              "bEnabled": true,
+              "bUseLocalSpace": false
+            }
+          },
+          "Spawn": {
+            "Class": "UParticleModuleSpawn",
+            "Data": {
+              "BurstList": [],
+              "Rate": {
+                "Constant": 14.0,
+                "Keys": [],
+                "Kind": "Constant",
+                "Max": 14.0,
+                "Min": 14.0
+              },
+              "RateScale": {
+                "Constant": 1.0,
+                "Keys": [],
+                "Kind": "Constant",
+                "Max": 1.0,
+                "Min": 1.0
+              },
+              "bEnabled": true
+            }
+          },
+          "TypeData": null,
+          "Modules": [
+            {
+              "Class": "UParticleModuleLifetime",
+              "Data": {
+                "Lifetime": {
+                  "Constant": 2.2,
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": 2.6,
+                  "Min": 1.8
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleLocation",
+              "Data": {
+                "StartLocation": {
+                  "Constant": [0.0, 0.0, 0.0],
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": [0.35, 0.35, 0.2],
+                  "Min": [-0.35, -0.35, 0.0]
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleVelocity",
+              "Data": {
+                "StartVelocity": {
+                  "Constant": [0.0, 0.0, 1.2],
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": [0.35, 0.35, 1.6],
+                  "Min": [-0.35, -0.35, 0.9]
+                },
+                "StartVelocityRadial": {
+                  "Constant": 0.1,
+                  "Keys": [],
+                  "Kind": "Constant",
+                  "Max": 0.1,
+                  "Min": 0.1
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleSize",
+              "Data": {
+                "StartSize": {
+                  "Constant": [0.4, 0.4, 0.4],
+                  "Keys": [],
+                  "Kind": "Uniform",
+                  "Max": [0.5, 0.5, 0.5],
+                  "Min": [0.3, 0.3, 0.3]
+                },
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleSizeMultiplyLife",
+              "Data": {
+                "LifeMultiplier": {
+                  "Constant": [1.0, 1.0, 1.0],
+                  "Keys": [
+                    { "Time": 0.0, "Value": [0.6, 0.6, 0.6] },
+                    { "Time": 1.0, "Value": [1.8, 1.8, 1.8] }
+                  ],
+                  "Kind": "Curve",
+                  "Max": [1.0, 1.0, 1.0],
+                  "Min": [1.0, 1.0, 1.0]
+                },
+                "MultiplyX": true,
+                "MultiplyY": true,
+                "MultiplyZ": true,
+                "bEnabled": true
+              }
+            },
+            {
+              "Class": "UParticleModuleColorOverLife",
+              "Data": {
+                "AlphaOverLife": {
+                  "Constant": 1.0,
+                  "Keys": [
+                    { "Time": 0.0, "Value": 0.0 },
+                    { "Time": 0.25, "Value": 0.35 },
+                    { "Time": 1.0, "Value": 0.0 }
+                  ],
+                  "Kind": "Curve",
+                  "Max": 1.0,
+                  "Min": 1.0
+                },
+                "ColorOverLife": {
+                  "Constant": [0.25, 0.25, 0.3],
+                  "Keys": [
+                    { "Time": 0.0, "Value": [0.35, 0.3, 0.35] },
+                    { "Time": 1.0, "Value": [0.12, 0.12, 0.16] }
+                  ],
+                  "Kind": "Curve",
+                  "Max": [1.0, 1.0, 1.0],
+                  "Min": [1.0, 1.0, 1.0]
+                },
+                "bClampAlpha": true,
+                "bEnabled": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
