@@ -1,0 +1,21 @@
+# Build artifacts & IDE
+.vs/
+x64/
+Win32/
+Debug/
+Release/
+Intermediate/
+Binaries/
+*.obj
+*.pdb
+*.ilk
+*.pch
+*.ipch
+*.tlog
+*.idb
+*.exp
+*.suo
+*.user
+*.VC.db
+*.opendb
+*.exe
